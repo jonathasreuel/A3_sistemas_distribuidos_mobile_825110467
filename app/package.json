@@ -1,0 +1,14 @@
+{
+    "name": "A3_Sistemas_Distribuidos_Mobile",
+    "version": "1.0.0",
+    "main": "index.js",
+    "author": "Jonathas Reuel",
+    "license": "ISC",
+    "dependencies": {
+      "express": "^5.1.0",
+      "mysql2": "^3.14.1"
+    },
+    "scripts": {
+      "start": "node index.js"
+    }
+  }
