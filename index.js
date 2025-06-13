@@ -7,8 +7,8 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
-app.use('/clientes', clienteRoutes);
-app.use('/carros', carroRoutes);
+app.use('/cliente', clienteRoutes);
+app.use('/carro', carroRoutes);
 
 (async () => {
   try {
