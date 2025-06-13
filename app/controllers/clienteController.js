@@ -1,13 +1,13 @@
-const { Cliente, Carro } = require('../models');
+const { Cliente } = require('../models');
 
 module.exports = {
   async listar(req, res) {
-    const clientes = await Cliente.findAll({ include: Carro });
+    const clientes = await Cliente.findAll();
     res.json(clientes);
   },
 
   async buscarPorId(req, res) {
-    const cliente = await Cliente.findByPk(req.params.id, { include: Carro });
+    const cliente = await Cliente.findByPk(req.params.id);
     if (!cliente) return res.status(404).json({ erro: 'Cliente não encontrado' });
     res.json(cliente);
   },
