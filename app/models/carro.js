@@ -1,8 +1,11 @@
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../database/database');
-const Cliente = require('./cliente');
 
 const Carro = sequelize.define('Carro', {
+  marca: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
   modelo: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -16,10 +19,7 @@ const Carro = sequelize.define('Carro', {
     allowNull: false,
   },
 }, {
-  tableName: 'carros'
+  tableName: 'carro'
 });
-
-Cliente.hasMany(Carro, { foreignKey: 'clienteId', onDelete: 'CASCADE' });
-Carro.belongsTo(Cliente, { foreignKey: 'clienteId' });
 
 module.exports = Carro;

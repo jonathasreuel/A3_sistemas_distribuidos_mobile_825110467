@@ -9,7 +9,13 @@ const Cliente = sequelize.define('Cliente', {
   email: {
     type: DataTypes.STRING,
     allowNull: false,
-  }
+  },
+  telefone: {
+    type: DataTypes.BIGINT,
+    allowNull: true,
+  },
+}, {
+  tableName: 'cliente'
 });
 
 module.exports = Cliente;
