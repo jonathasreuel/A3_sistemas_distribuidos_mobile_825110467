@@ -9,6 +9,11 @@ const sequelize = new Sequelize(
     host: process.env.MYSQL_HOST,
     port: process.env.MYSQL_PORT || 3306,
     dialect: 'mysql',
+    timezone: '-03:00',
+    dialectOptions: {
+      supportBigNumbers: true,
+      bigNumberStrings: true
+    },
     logging: false,
   }
 );
