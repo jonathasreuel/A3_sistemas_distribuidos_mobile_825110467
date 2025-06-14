@@ -2,14 +2,22 @@ const { Cliente } = require('../models');
 
 module.exports = {
   async listar(req, res) {
-    const clientes = await Cliente.findAll();
-    res.json(clientes);
+    try {
+      const clientes = await Cliente.findAll();
+      res.json(clientes);
+    } catch (err) {
+      res.status(500).json({ erro: 'Erro ao listar clientes', detalhes: err.message });
+    }
   },
 
   async buscarPorId(req, res) {
-    const cliente = await Cliente.findByPk(req.params.id);
-    if (!cliente) return res.status(404).json({ erro: 'Cliente não encontrado' });
-    res.json(cliente);
+    try {
+      const cliente = await Cliente.findByPk(req.params.id);
+      if (!cliente) return res.status(404).json({ erro: 'Cliente não encontrado' });
+      res.json(cliente);
+    } catch (err) {
+      res.status(500).json({ erro: 'Erro ao buscar cliente', detalhes: err.message });
+    }
   },
 
   async criar(req, res) {
@@ -17,24 +25,45 @@ module.exports = {
       const novo = await Cliente.create(req.body);
       res.status(201).json(novo);
     } catch (err) {
-      res.status(400).json({ erro: err.message });
+      res.status(400).json({ erro: 'Erro ao criar cliente', detalhes: err.message });
     }
   },
 
   async atualizar(req, res) {
-    const [atualizado] = await Cliente.update(req.body, { where: { id: req.params.id } });
-    atualizado ? res.sendStatus(204) : res.status(404).json({ erro: 'Cliente não encontrado' });
+    try {
+      const [atualizado] = await Cliente.update(req.body, { where: { id: req.params.id } });
+      if (atualizado) {
+        res.status(200).json({ mensagem: 'Cliente atualizado com sucesso!' });
+      } else {
+        res.status(404).json({ erro: 'Cliente não encontrado' });
+      }
+    } catch (err) {
+      res.status(400).json({ erro: 'Erro ao atualizar cliente', detalhes: err.message });
+    }
   },
 
   async atualizarParcial(req, res) {
-    const cliente = await Cliente.findByPk(req.params.id);
-    if (!cliente) return res.status(404).json({ erro: 'Cliente não encontrado' });
-    await cliente.update(req.body);
-    res.sendStatus(204);
+    try {
+      const cliente = await Cliente.findByPk(req.params.id);
+      if (!cliente) return res.status(404).json({ erro: 'Cliente não encontrado' });
+
+      await cliente.update(req.body);
+      res.status(200).json({ mensagem: 'Cliente atualizado parcialmente com sucesso!' });
+    } catch (err) {
+      res.status(400).json({ erro: 'Erro ao atualizar parcialmente o cliente', detalhes: err.message });
+    }
   },
 
   async remover(req, res) {
-    const removido = await Cliente.destroy({ where: { id: req.params.id } });
-    removido ? res.sendStatus(204) : res.status(404).json({ erro: 'Cliente não encontrado' });
+    try {
+      const removido = await Cliente.destroy({ where: { id: req.params.id } });
+      if (removido) {
+        res.status(200).json({ mensagem: 'Cliente removido com sucesso!' });
+      } else {
+        res.status(404).json({ erro: 'Cliente não encontrado' });
+      }
+    } catch (err) {
+      res.status(500).json({ erro: 'Erro ao remover cliente', detalhes: err.message });
+    }
   }
 };
