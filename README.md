@@ -127,4 +127,6 @@ Projeto atende todos os requisitos da A3.
 
 👨‍💻 Desenvolvido por: Jonathas Reuel de Souza Lima (825110467)
 
+🎥 [Link da Apresentação no Youtube](https://www.youtube.com/watch?v=eZ5D8TkqSIw)
+
 📅 Data de entrega: 15 de Junho de 2025
