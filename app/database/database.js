@@ -18,7 +18,7 @@ const sequelize = new Sequelize(
   }
 );
 
-async function waitForDatabase(retries = 10, delay = 3000) {
+async function waitForDatabase(retries = 20, delay = 2000) {
   for (let i = 0; i < retries; i++) {
     try {
       console.log(`Tentando conectar ao banco (tentativa ${i + 1}/${retries})...`);
