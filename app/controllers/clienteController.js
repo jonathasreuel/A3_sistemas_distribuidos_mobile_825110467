@@ -4,6 +4,7 @@ module.exports = {
   async listar(req, res) {
     try {
       const clientes = await Cliente.findAll();
+      res.set('Cache-Control', 'public, max-age=60');
       res.json(clientes);
     } catch (err) {
       res.status(500).json({ erro: 'Erro ao listar clientes', detalhes: err.message });
@@ -14,6 +15,7 @@ module.exports = {
     try {
       const cliente = await Cliente.findByPk(req.params.id);
       if (!cliente) return res.status(404).json({ erro: 'Cliente não encontrado' });
+      res.set('Cache-Control', 'public, max-age=60');
       res.json(cliente);
     } catch (err) {
       res.status(500).json({ erro: 'Erro ao buscar cliente', detalhes: err.message });

@@ -4,6 +4,7 @@ module.exports = {
   async listar(req, res) {
     try {
       const carros = await Carro.findAll();
+      res.set('Cache-Control', 'public, max-age=60');
       res.json(carros);
     } catch (err) {
       res.status(500).json({ erro: 'Erro ao listar carros', detalhes: err.message });
@@ -14,6 +15,7 @@ module.exports = {
     try {
       const carro = await Carro.findByPk(req.params.id);
       if (!carro) return res.status(404).json({ erro: 'Carro não encontrado' });
+      res.set('Cache-Control', 'public, max-age=60');
       res.json(carro);
     } catch (err) {
       res.status(500).json({ erro: 'Erro ao buscar carro', detalhes: err.message });
