@@ -1,14 +1,14 @@
 const express = require('express');
 const { sequelize, waitForDatabase } = require('./app/database/database');
-const clienteRoutes = require('./app/routes/clienteRoutes');
-const carroRoutes = require('./app/routes/carroRoutes');
+const clienteRoutes = require('./app/routes/clientesRoutes');
+const carroRoutes = require('./app/routes/carrosRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
-app.use('/cliente', clienteRoutes);
-app.use('/carro', carroRoutes);
+app.use('/clientes', clienteRoutes);
+app.use('/carros', carroRoutes);
 
 (async () => {
   try {

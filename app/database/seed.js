@@ -6,8 +6,8 @@ async function seed() {
     await sequelize.sync({ force: true });
 
     await Cliente.bulkCreate([
-      { nome: 'Maria Silva', email: 'maria.silva@teste.com', telefone: 11988887777 },
-      { nome: 'Carlos Souza', email: 'carlos.souza@teste.com', telefone: 11977776666 },
+      { nome: 'Adalto Selau Sparremberger', email: 'adalto.sparremberger@teste.com', telefone: 11988887777 },
+      { nome: 'Marivaldo Pereira dos Santos', email: 'marivaldo.santos@teste.com', telefone: 11977776666 },
       { nome: 'Ana Paula', email: 'ana.paula@teste.com', telefone: 11966665555 },
       { nome: 'João Pedro', email: 'joao.pedro@teste.com', telefone: 11955554444 },
       { nome: 'Fernanda Lima', email: 'fernanda.lima@teste.com', telefone: 11944443333 },
