@@ -2,7 +2,9 @@
 
 ## 🎯 Tema da Atividade
 
-Construção de uma API RESTful com Acesso a Banco de Dados Relacional (MySQL), utilizando Node.js, Express, Sequelize e Docker.
+Construção de uma API RESTful com Acesso a Banco de Dados Relacional (MySQL).
+
+Eu utilizei Node.js, Express, Sequelize e Docker.
 
 O projeto segue os princípios da arquitetura REST conforme especificado por Roy Fielding:
 
